@@ -1,6 +1,6 @@
 # Unofficial CNN News Headline Feed
 
-This provides a CLI to view current headlines from NPR News. It is not affiliated with NPR News in any way. All content, copyright NPR.
+This provides a CLI to view current headlines from various topics on CNN. It is not affiliated with CNN in any way. All content, copyright CNN.
 
 ## Installation
 
