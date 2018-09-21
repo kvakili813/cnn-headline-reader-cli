@@ -1,4 +1,4 @@
-class Topics::CLI
+class CNNHeadlines::Topics
 
   attr_accessor :name, :url
 

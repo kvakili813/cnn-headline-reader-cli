@@ -1,4 +1,4 @@
-class NPRNews::Headlines
+class CNNHeadlines::Headlines
   attr_accessor :title, :url
 
   @@headlines = []
