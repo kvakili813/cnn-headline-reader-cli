@@ -5,6 +5,7 @@ require "pry"
 require_relative "cnn_headlines/version"
 require_relative "cnn_headlines/cli.rb"
 require_relative "cnn_headlines/topics.rb"
+require_relative "cnn_headlines/headlines.rb"
 
 
 module CNNHeadlines
