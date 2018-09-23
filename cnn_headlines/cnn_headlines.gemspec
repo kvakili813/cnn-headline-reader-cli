@@ -5,7 +5,7 @@ require "cnn_headlines/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "cnn_headlines"
-  spec.version       = CnnHeadlines::VERSION
+  spec.version       = CNNHeadlines::VERSION
   spec.authors       = ["<github username>"]
   spec.email         = ["<github email address>"]
 
