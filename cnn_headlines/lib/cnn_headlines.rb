@@ -4,10 +4,5 @@ require "pry"
 
 require_relative "cnn_headlines/version"
 require_relative "cnn_headlines/cli.rb"
-require_relative "cnn_headlines/topics.rb"
-require_relative "cnn_headlines/headlines.rb"
-
-
-module CNNHeadlines
-  # Your code goes here...
-end
+require_relative "cnn_headlines/scraper.rb"
+require_relative "cnn_headlines/breaking.rb"

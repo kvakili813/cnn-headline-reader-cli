@@ -1,6 +1,6 @@
-RSpec.describe CnnHeadlines do
+RSpec.describe CNNHeadlines do
   it "has a version number" do
-    expect(CnnHeadlines::VERSION).not_to be nil
+    expect(CNNHeadlines::VERSION).not_to be nil
   end
 
   it "does something useful" do

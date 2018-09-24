@@ -1,66 +1,44 @@
 class CNNHeadlines::CLI
 
   def call
-    puts "Extra! Extra! Read All About It!"
-    topics
-    list_headlines
+    CNNHeadlines::Scraper.news
+    breaking_news
+    menu
     goodbye
   end
 
-  def topics
-    @topics = CNNHeadlines::Topics.topic
-    topics_display
-  end
+  def breaking_news
+    puts "Today's breaking news:\n\n"
 
-  def topics_display
-    @topics.each.with_index(1) do |topic, i|
-      puts "#{i}. #{topic.name}"
-    end
-  end
-
-  def topic_choice
-    puts "Please choose one of the news topics by number, or type exit:"
-    input = gets.strip
-    if input == "exit"
-      goodbye
-    elsif !((1..@topics.count).include?(input.to_i))
-      topic_choice
-    else
-      @topics.each.with_index do |topic, i|
-        case input
-          when  "#{i+1}"
-            headlines(@topics[i].url)
-          end
-        end
+    CNNHeadlines::Breaking.all.each.with_index(1) do |breaking_news, i|
+      puts "#{i}. #{breaking_news.title} \n\n"
       end
-  end
-
-  def headlines(topic_url)
-    @headlines = CNNHeadlines::Topics.headlines(topic_url)
-    @headlines.each.with_index(1) do |head, i|
-      puts "#{i}. #{head.title}"
-      puts "(#{head.url})"
-      puts "\n"
     end
-    more
+
+    def menu
+    input = nil
+    until input == 'exit'
+      puts 'Enter the number of breaking news headlines you would like to read or type list to see all the news again or type exit:'
+      input = gets.strip.downcase
+
+      if input.to_i.between?(1, CNNHeadlines::Breaking.all.size)
+        news = CNNHeadlines::Scraper.add_story(CNNHeadlines::Breaking.find(input))
+        puts "Title: #{news.title}"
+        puts '-------------Story----------------'
+        puts breaking.story
+      elsif input == 'list'
+        breaking_news
+      elsif input == 'exit'
+        break
+      else
+        puts 'Please type list or exit.'
+      end
+    end
+
   end
 
-  def more
-   puts "Type list to view the news topics again, or type exit."
-   input = gets.strip
-
-   if input == "exit"
-     goodbye
-   elsif input == "list"
-     topics_display
-     topic_choice
-   else more
-   end
- end
-
- def goodbye
-   puts "Come back later for more headlines!"
-   exit
- end
+  def goodbye
+    puts "\nDon't miss the latest breaking news! Visit us again soon."
+  end
 
 end
